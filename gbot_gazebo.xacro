@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+
+<robot name="gbot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <transmission name="Right_Wheel_Transmission">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Right_Wheel_Joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Right_Wheel_Motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1.0</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <transmission name="Left_Wheel_Transmission">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="Left_Wheel_Joint">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="Left_Wheel_Motor">
+            <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+            <mechanicalReduction>1.0</mechanicalReduction>
+        </actuator>
+    </transmission>
+
+    <gazebo reference="Right_Wheel">
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <kp>1000.0</kp>
+        <kd>1.0</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
+    </gazebo>
+
+    <gazebo reference="Left_Wheel">
+        <mu1>1.0</mu1>
+        <mu2>1.0</mu2>
+        <kp>1000.0</kp>
+        <kd>1.0</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
+    </gazebo>
+
+    <gazebo reference="Caster_Wheel_Left">
+        <mu1>0.1</mu1>
+        <mu2>0.1</mu2>
+        <kp>1000.0</kp>
+        <kd>100.0</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
+    </gazebo>
+
+    <gazebo reference="Caster_Wheel_Right">
+        <mu1>0.1</mu1>
+        <mu2>0.1</mu2>
+        <kp>1000.0</kp>
+        <kd>100.0</kd>
+        <minDepth>0.001</minDepth>
+        <maxVel>0.1</maxVel>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+            <legacyModeNS>True</legacyModeNS>
+        </plugin>
+    </gazebo>
+
+    <gazebo>
+        <plugin name="imu_plugin" filename="libgazebo_ros_imu.so">
+            <alwaysOn>true</alwaysOn>
+            <bodyName>Gyro_Sensor</bodyName>
+            <frameName>Gyro_Sensor</frameName>
+            <topicName>imu</topicName>
+            <serviceName>imu_service</serviceName>
+            <gaussianNoise>0.001</gaussianNoise>
+            <updateRate>1000</updateRate>
+        </plugin>
+    </gazebo>
+
+</robot>

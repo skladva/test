@@ -1,0 +1,591 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="gbot" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <xacro:include filename="$(find gbot)/urdf/gbot_gazebo.xacro"/>
+
+  <link name="world"/>
+  <joint name="base_joint" type="fixed">
+    <parent link="world"/>
+    <child link="base_link"/>
+    <origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
+ </joint>
+
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.010826 -0.0004927 0.065439"
+        rpy="0 0 0" />
+      <mass
+        value="3.1818" />
+      <inertia
+        ixx="0.007593"
+        ixy="-1.5593E-07"
+        ixz="1.5794E-06"
+        iyy="0.010257"
+        iyz="8.8363E-09"
+        izz="0.01692" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.89804 0.91765 0.92941 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="Right_Wheel">
+    <inertial>
+      <origin
+        xyz="6.93889390390723E-17 0.0169626315039399 6.15514583746091E-14"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="0.000128855518338028"
+        ixy="-1.00401547754247E-20"
+        ixz="-7.36399865175169E-22"
+        iyy="0.000236082716984249"
+        iyz="3.87080092391933E-16"
+        izz="0.000128855518338028" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/Right_Wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Right_Wheel_Joint"
+    type="continuous">
+    <origin
+      xyz="-0.0325 -0.1508 0.038"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Right_Wheel" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      effort="3.7"
+      velocity="6.28" />
+  </joint>
+  <link
+    name="Left_Wheel">
+    <inertial>
+      <origin
+        xyz="-1.38777878078145E-17 -0.01696263150394 -6.12357387019813E-14"
+        rpy="0 0 0" />
+      <mass
+        value="0.1" />
+      <inertia
+        ixx="0.000128855518338028"
+        ixy="-1.71924540226372E-20"
+        ixz="-5.7636071003562E-22"
+        iyy="0.000236082716984249"
+        iyz="3.87057406157318E-16"
+        izz="0.000128855518338028" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/Left_Wheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <sphere radius="0.05"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Left_Wheel_Joint"
+    type="continuous">
+    <origin
+      xyz="-0.0325 0.1498 0.038"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Left_Wheel" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      effort="3.7"
+      velocity="6.28" />
+  </joint>
+  <link
+    name="IR_Sensor_1">
+    <inertial>
+      <origin
+        xyz="0.00263075346973592 3.87773107652922E-05 -0.0015898578189563"
+        rpy="0 0 0" />
+      <mass
+        value="0.00703122046482547" />
+      <inertia
+        ixx="8.85590721035026E-07"
+        ixy="-3.15496436935525E-09"
+        ixz="1.19031422633866E-08"
+        iyy="6.80433380861349E-07"
+        iyz="-5.07557824010587E-11"
+        izz="1.06943596755306E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/IR_Sensor_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/IR_Sensor_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="IR_Sensor_1_Joint"
+    type="fixed">
+    <origin
+      xyz="0.152 0.1245 0.0239"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="IR_Sensor_1" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Gyro_Sensor">
+    <inertial>
+      <origin
+        xyz="-0.000240381008956722 -0.000157440504766265 0.000695793111173848"
+        rpy="0 0 0" />
+      <mass
+        value="0.000351250881223522" />
+      <inertia
+        ixx="9.45689291640453E-09"
+        ixy="6.12806815820578E-12"
+        ixz="-8.27191433258164E-24"
+        iyy="5.23527544612309E-09"
+        iyz="-2.16941604435136E-22"
+        izz="1.46360849067925E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/Gyro_Sensor.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.964705882352941 0.964705882352941 0.952941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/Gyro_Sensor.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Gyro_Fixed"
+    type="fixed">
+    <origin
+      xyz="-0.0030424 -0.00043806 0.118"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Gyro_Sensor" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Camera_Sensor">
+    <inertial>
+      <origin
+        xyz="-0.11061794156375 -0.150339423416142 -0.0604669828673732"
+        rpy="0 0 0" />
+      <mass
+        value="0" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/Camera_Sensor.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/Camera_Sensor.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Camera_Fixed"
+    type="fixed">
+    <origin
+      xyz="0.1459 -0.0005 0.06755"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Camera_Sensor" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="LIDAR">
+    <inertial>
+      <origin
+        xyz="0.00514000790611303 0.000281468343013902 0.000946522803197292"
+        rpy="0 0 0" />
+      <mass
+        value="0.0757267113293577" />
+      <inertia
+        ixx="1.60415302776897E-05"
+        ixy="-1.64290020189154E-07"
+        ixz="-2.90703272221058E-08"
+        iyy="2.27422442657172E-05"
+        iyz="5.89479542203566E-09"
+        izz="3.56916101484555E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/LIDAR.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.250980392156863 0.250980392156863 0.250980392156863 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/LIDAR.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="LIDAR_Fixed"
+    type="fixed">
+    <origin
+      xyz="0.055 -0.0005 0.121"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="LIDAR" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Caster_Wheel_Left">
+    <inertial>
+      <origin
+        xyz="-0.00423435446204318 0.000285931239452614 -0.0112516477608549"
+        rpy="0 0 0" />
+      <mass
+        value="0.0631718003452637" />
+      <inertia
+        ixx="1.45227504259447E-05"
+        ixy="1.03170608812968E-06"
+        ixz="5.63844159655592E-07"
+        iyy="1.01434068721607E-05"
+        iyz="5.47566868446295E-07"
+        izz="2.20113000444342E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/Caster_Wheel_Left.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/Caster_Wheel_Left.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Caster_Wheel_Left_Joint"
+    type="fixed">
+    <origin
+      xyz="0.1335 0.0435 0.02"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Caster_Wheel_Left" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="Caster_Wheel_Right">
+    <inertial>
+      <origin
+        xyz="0.000765646054717753 -0.0007859323949643 -0.0112516479882487"
+        rpy="0 0 0" />
+      <mass
+        value="0.0631717975002748" />
+      <inertia
+        ixx="1.45227479685218E-05"
+        ixy="-1.03170800601914E-06"
+        ixz="5.63844119909547E-07"
+        iyy="1.01434058503416E-05"
+        iyz="-5.4756684097385E-07"
+        izz="2.20112965808429E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/Caster_Wheel_Right.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/Caster_Wheel_Right.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="Caster_Wheel_Right_Joint"
+    type="fixed">
+    <origin
+      xyz="0.1285 -0.044 0.02"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Caster_Wheel_Right" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="IR_Sensor_2">
+    <inertial>
+      <origin
+        xyz="0.002630753469736 3.87773107787259E-05 -0.0015898578189562"
+        rpy="0 0 0" />
+      <mass
+        value="0.00703122046482548" />
+      <inertia
+        ixx="8.85590721035025E-07"
+        ixy="-3.15496436935439E-09"
+        ixz="1.19031422633805E-08"
+        iyy="6.80433380861349E-07"
+        iyz="-5.07557824015255E-11"
+        izz="1.06943596755306E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/IR_Sensor_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/IR_Sensor_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="IR_Sensor_2_Joint"
+    type="fixed">
+    <origin
+      xyz="0.152 -0.0005 0.0239"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="IR_Sensor_2" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="IR_Sensor_3">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/IR_Sensor_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://gbot/meshes/IR_Sensor_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="IR_Sensor_3_Joint"
+    type="fixed">
+    <origin
+      xyz="0.152 -0.1255 0.0239"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="IR_Sensor_3" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
